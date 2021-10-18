@@ -1,0 +1,21 @@
+<p>NAV LINKS</p>
+<app-nav-links [rooms]="navLinks"></app-nav-links>
+
+<p>HOME NODE</p>
+<h2> Welcome {{userName}} </h2>
+
+<p>ROOM NODE</p>
+<h3>{{roomName}}</h3>
+<app-thoughts [thoughts]="thoughts"></app-thoughts>
+
+<p>NAV MAIN</p>
+<app-nav-main></app-nav-main>
+
+<!-- 
+  get user info service
+  set navLinks info
+  set mainLinks info
+  if home node, display welcome message
+  else, display room name and thoughts
+  TRY: if !home, then other rooms
+-->
