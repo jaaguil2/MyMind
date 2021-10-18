@@ -1,19 +1,39 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators'
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
-import { UserSignIn } from './UserSignIn'
+import { UserSignIn } from './interface/userSignIn';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(http: HttpClient) { }
+  token?: string;
 
-  signIn() {
+  httpOptions = {
+    headers: new HttpHeaders({
+      Authorization: ''
+    })
+  }
 
+  private apiUrl = 'http://localhost:4000/api/'
+
+  constructor(private http: HttpClient) { }
+
+  signIn(signIn: UserSignIn) {
+    return this.http.post(this.apiUrl+"signin", signIn)
+      .pipe(catchError(this.handleError))
+  }
+
+  setToken(token: string) {
+    this.httpOptions.headers =
+      this.httpOptions.headers.set('Authorization', token);
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    return throwError(error);
   }
 
 }
