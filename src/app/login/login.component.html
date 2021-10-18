@@ -1,9 +1,12 @@
-<form>
-  <input placeholder="user name" />
-  <input placeholder="password" />
-  <button>Sign Up</button>
-  <button>Submit</button>
-</form>
+<div>
+  <input type="text" placeholder="User Name" [(ngModel)]="name" />
+  <input type="text" placeholder="Password" [(ngModel)]="password" />
+  <button routerLink='/signup'>Sign Up</button>
+  <button (click)="handleSubmit()">Submit</button>
+</div>
+
+<p>{{name}}</p>
+<p>{{password}}</p>
 <!-- 
   inputs for username and password
   take into variables
