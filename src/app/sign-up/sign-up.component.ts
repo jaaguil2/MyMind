@@ -1,4 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+// Injections
+import { UserService } from '../user.service';
+import { RoomService } from '../room.service';
+
+// Interfaces
+import { User } from '../interface/user';
+import { token } from '../interface/token';
+import { Room } from '../interface/room';
 
 @Component({
   selector: 'app-sign-up',
@@ -6,15 +16,42 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+  // variable for error display to user
+  errorView?: string
 
-  constructor() { }
+  // inject User api
+  constructor(private roomService: RoomService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  handleSignUp(name: string, userName:string, password: string, cPassword: string, email: string) {
+    // add args into array for ease of use
+    const inputArray = [name, userName, password, cPassword, email];
+    // remove extra spaces from ends and start
+    inputArray.forEach(e => e.trim());
+    // do nothing if there are any black spaces
+    if (inputArray.includes('')) {
+      return;
+    };
+    // check if matching passwords
+    if (password !== cPassword) {
+      return
+    }
+    // call signUp()
+    this.userService.signUp({ name, userName, password, email } as User)
+      .subscribe(
+        res => {
+          // set token
+          let newToken = res as token
+          // navigate to new room
+          this.roomService.getHome(newToken.id)
+            .subscribe(res => {
+              let room = res as Room
+              this.router.navigate([`room/${room._id}`])
+            })
+        },
+        err => this.errorView = err.error
+      )
+  }
 }
-
-// input for: name, user name, password, confirm password, email
-// button to register
-// if success go to home
-// if fail, ? stay ?

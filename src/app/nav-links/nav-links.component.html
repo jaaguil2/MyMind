@@ -1,11 +1,9 @@
 <div>
-  <ul *ngIf='rooms'>
-    <li *ngFor="let room of rooms">{{room}}</li>
+  <ul>
+    <li *ngFor="let room of rooms" >
+      <a routerLink="/room/{{room._id}}">{{room.name}}</a>
+    </li>
   </ul>
 </div>
 
 
-<!-- 
-  Do I need *ngIf?
-  list of connecting rooms with links to that room
--->

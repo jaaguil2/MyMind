@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-
-import { UserService } from '../user.service';
-import { UserSignIn } from '../interface/userSignIn';
-import { token } from '../interface/token';
 import { Router } from '@angular/router';
 
+// Injections
+import { UserService } from '../user.service';
+import { RoomService } from '../room.service';
 
+// Interfaces
+import { UserSignIn } from '../interface/userSignIn';
+import { token } from '../interface/token';
+import { Room } from '../interface/room';
 
 @Component({
   selector: 'app-login',
@@ -13,36 +16,37 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  // variable for error display to user
   errorView?: string
 
-  // inject user api class
-  constructor(private userService: UserService, private router: Router) { }
+  // inject user api
+  constructor(private roomService: RoomService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   handleSubmit(userName: string, password: string): void {
-    // remove extra spaces
+    // remove extra spaces from ends and start
     userName = userName.trim()
     password = password.trim()
     // do nothing if black username and password
-    if (!userName && !password) {return;}
-    // make the call(signIn) in userService
+    if (!userName && !password) {
+      return;
+    }
+    // call signIn()
     this.userService.signIn({ userName, password } as UserSignIn)
       .subscribe(
         res => {
-          let newtoken = res as token
-          this.userService.setToken(newtoken.token)
-          this.router.navigate(['home'])
+          // set token
+          let newToken = res as token
+          // navigate to home room, not just home page
+          this.roomService.getHome(newToken.id)
+            .subscribe(res => {
+              let room = res as Room
+              this.router.navigate([`room/${room._id}`])
+            })
         },
         err => this.errorView = err.error
-      ) // put in error message
-    
+      )    
   }
 }
-
-// inputs for username and password
-// take into variables
-// send to service to validate
-// button to submit

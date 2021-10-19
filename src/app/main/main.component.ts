@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+// injections
+import { RoomService } from '../room.service';
+
+// Interface
+import { Room } from '../interface/room';
 
 @Component({
   selector: 'app-main',
@@ -7,32 +14,50 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  // convert to room.links
-  navLinks: string[] = [
-    "room1",
-    "room2",
-    "room3"
-  ]
+  links:Room[] = [];
 
-  // covert to room.thoughts
-  thoughts = "the thoughts are: these are my thoughts"
-
-  // convert to room.name
-  roomName = "the roomName is: Art of War"
-
-  // convert to userName
-  userName = "the userName is: JoshJosh"
-
-  constructor() { }
-
-  ngOnInit(): void {
+  room: Room = {
+    _id: "",
+    name: '',
+    thoughts: '',
+    links: [],
+    owner: {
+      _id: '',
+      userName: ''
+    }
   }
 
-}
+  constructor(
+    private route: ActivatedRoute,
+    private roomService: RoomService
+  ) { }
 
-// get user info service
-// set navLinks info
-// set mainLinks info
-// if home node, display welcome message
-// else, display room name and thoughts
-// TRY: if !home, then other rooms
+  ngOnInit(): void {
+    this.route.params.subscribe(
+      () => {
+        this.room = {
+          _id: "",
+          name: '',
+          thoughts: '',
+          links: [],
+          owner: {
+            _id: '',
+            userName: ''
+          }
+        }
+        this.getRoom()
+      }
+    )
+  };
+
+  getRoom() {
+    const id: string = String(this.route.snapshot.paramMap.get('id'))
+    this.roomService.getRoom(id)
+      .subscribe(room => {
+        this.room = room as Room
+        this.links = this.room.links
+      })
+  };
+
+
+};

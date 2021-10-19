@@ -1,22 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
+// Interface
 import { UserSignIn } from './interface/userSignIn';
+import { User } from './interface/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  token?: string;
-
-  httpOptions = {
-    headers: new HttpHeaders({
-      Authorization: ''
-    })
-  }
+  
 
   private apiUrl = 'http://localhost:4000/api/'
 
@@ -27,9 +23,9 @@ export class UserService {
       .pipe(catchError(this.handleError))
   }
 
-  setToken(token: string) {
-    this.httpOptions.headers =
-      this.httpOptions.headers.set('Authorization', token);
+  signUp(user: User) {
+    return this.http.post(this.apiUrl+'signup', user)
+      .pipe(catchError(this.handleError))
   }
 
   private handleError(error: HttpErrorResponse) {

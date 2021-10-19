@@ -1,6 +1,6 @@
 <div>
   <input type="text" placeholder="User Name" #userName />
-  <input type="text" placeholder="Password" #userPassword />
+  <input type="password" placeholder="Password" #userPassword />
   <button routerLink='/signup'>Sign Up</button>
   <button (click)="handleSubmit(userName.value, userPassword.value); userName.value = ''; userPassword.value = '';">Submit</button>
 </div>

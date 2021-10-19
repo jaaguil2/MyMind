@@ -1,21 +1,22 @@
-<p>NAV LINKS</p>
-<app-nav-links [rooms]="navLinks"></app-nav-links>
+<app-nav-links [rooms]="this.links"></app-nav-links>
 
-<p>HOME NODE</p>
-<h2> Welcome {{userName}} </h2>
+<div *ngIf="this.room.name === 'home'">
+  <h2>Welcome {{this.room.owner.userName}}</h2>
+</div>
 
-<p>ROOM NODE</p>
-<h3>{{roomName}}</h3>
-<app-thoughts [thoughts]="thoughts"></app-thoughts>
+<div *ngIf="this.room.name !== 'home'">
+  <h3>{{this.room.name}}</h3>
+  <app-thoughts 
+    [thoughts]="this.room.thoughts"
+    [id]="this.room._id"
+  >
+  </app-thoughts>
+</div>
 
-<p>NAV MAIN</p>
-<app-nav-main></app-nav-main>
-
-<!-- 
-  get user info service
-  set navLinks info
-  set mainLinks info
-  if home node, display welcome message
-  else, display room name and thoughts
-  TRY: if !home, then other rooms
--->
+<app-nav-main 
+  [ownerId]="this.room.owner._id" 
+  [name]="this.room.name"
+  [roomId]="this.room._id"
+  [newRoomLinks]="this.links"
+>
+</app-nav-main>

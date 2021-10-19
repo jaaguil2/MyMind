@@ -1,10 +1,18 @@
+<p>{{this.error}}</p>
+<div *ngIf="visRoom">
+  <label for="">New Room</label>
+  <input [(ngModel)]="newRoomName" placeholder="Room Name" />
+  <button (click)="createRoom(); newRoomName=''; visRoom=false">Enter</button>
+</div>
+
 <ul>
-  <li>Home</li>
-  <li>Back</li>
-  <li>View</li>
+  <li>
+  <a (click)="goHome()">Home</a>
+  </li>
+  <li>
+  <a (click)="newRoom()">New</a>
+  </li>
+  <li>
+  <a (click)="goBack()">Back</a>
+  </li>
 </ul>
-
-
-<!-- 
-  links to home back 'view'
--->

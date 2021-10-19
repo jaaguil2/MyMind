@@ -11,6 +11,8 @@ import { NavMainComponent } from './nav-main/nav-main.component';
 import { MainComponent } from './main/main.component';
 import { ThoughtsComponent } from './thoughts/thoughts.component';
 import { AppRoutingModule } from './app-routing.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 
 @NgModule({
   declarations: [
@@ -20,13 +22,14 @@ import { AppRoutingModule } from './app-routing.module';
     SignUpComponent,
     NavMainComponent,
     MainComponent,
-    ThoughtsComponent
+    ThoughtsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+// Interface
+import { Room } from '../interface/room';
 
 @Component({
   selector: 'app-nav-links',
@@ -7,14 +9,13 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./nav-links.component.css']
 })
 export class NavLinksComponent implements OnInit {
-  @Input() rooms?: string[];
-
+  @Input() rooms?: Room[];
+  
   constructor() { }
 
   ngOnInit(): void {
   }
 
-}
+  
 
-// will need a get or something for these rooms
-// list of connecting rooms with links to that room
+}
