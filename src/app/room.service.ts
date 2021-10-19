@@ -34,6 +34,11 @@ export class RoomService {
       .pipe(catchError(this.handleError));
   }
 
+  deleteRoom(id: string) {
+    return this.http.delete(this.apiUrl + "room/" + id)
+      .pipe(catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     return throwError(error);
   };

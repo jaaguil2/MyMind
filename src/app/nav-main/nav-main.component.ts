@@ -20,7 +20,7 @@ export class NavMainComponent implements OnInit {
   @Input() name?: string;
   @Input() ownerId?: string;
   @Input() roomId?: string;
-  @Input() newRoomLinks?: Room[]
+  @Input() roomLinks: Room[] = []
 
   // Vars
   visRoom: boolean = false;
@@ -69,10 +69,17 @@ export class NavMainComponent implements OnInit {
     this.roomService.newRoom(roomObj)
       .subscribe(
         room => {
-          this.newRoomLinks?.push(room as Room)  
+          this.roomLinks?.push(room as Room)  
         },
         err => this.error = err.error
-      )
-      
+      )      
+  }
+
+  deleteRoom() {
+    if (this.roomLinks.length > 0) {return}
+    if (this.name !== "home") {
+      this.roomService.deleteRoom(String(this.roomId))
+        .subscribe(res => this.location.back(), err => this.error = err.error)
+    }    
   }
 }
