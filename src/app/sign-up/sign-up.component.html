@@ -1,32 +1,29 @@
-<div>
-  <input type="text" placeholder="Name" #name />
-  <input type="text" placeholder="User Name" #userName />
-  <input type="password" placeholder="password" #password />
-  <input type="password" placeholder="confirm password" #cPassword />
-  <input type="email" placeholder="email" #email />
-  <button (click)="handleSignUp(
-    name.value, 
-    userName.value,
-    password.value,
-    cPassword.value,
-    email.value
-    );
-    name.value = '';
-    userName.value = '';
-    password.value = '';
-    cPassword.value = '';
-    email.value = '';
-    "
-  >
-    Submit
-  </button>
-  <button routerLink="">Cancel</button>
+<div class="d-flex flex-column">
+  <input class="form-control m-2" type="text" placeholder="Name" #name />
+  <input class="form-control m-2" type="text" placeholder="User Name" #userName />
+  <input class="form-control m-2" type="password" placeholder="password" #password />
+  <input class="form-control m-2" type="password" placeholder="confirm password" #cPassword />
+  <input class="form-control m-2" type="email" placeholder="email" #email />
+  <div class="btn-group container m-2" role="group">
+    <button type="button" class="btn btn-dark" (click)="handleSignUp(
+      name.value, 
+      userName.value,
+      password.value,
+      cPassword.value,
+      email.value
+      );
+      name.value = '';
+      userName.value = '';
+      password.value = '';
+      cPassword.value = '';
+      email.value = '';
+      "
+    >
+      Submit
+    </button>
+    <button type="button" class="btn btn-dark" routerLink="">Cancel</button>
+  </div>
 </div>
-<p>{{errorView}}</p>
-
-<!-- 
-  input for: name, user name, password, confirm password, email
-  button to register
-  if success go to home
-  if fail, ? stay ?
--->
+<alert *ngIf="this.errorView" class="text-center fixed-bottom" type="danger">
+  {{errorView}}
+</alert>

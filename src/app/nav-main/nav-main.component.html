@@ -1,24 +1,31 @@
-<p>{{this.error}}</p>
-<div *ngIf="visRoom">
-  <label for="">New Room</label>
-  <input [(ngModel)]="newRoomName" placeholder="Room Name" />
-  <button (click)="createRoom(); newRoomName=''; visRoom=false">Enter</button>
-</div>
+<div class="fixed-bottom ">
+  <alert *ngIf="this.error" class="text-center" type="danger">
+    {{this.error}}
+  </alert>
 
-<ul>
-  <li>
-  <a (click)="goHome()">Home</a>
-  </li>
-  <li>
-  <a (click)="newRoom()">New</a>
-  </li>
-  <li>
-    <a (click)="deleteRoom()">Delete</a>
-  </li>
-  <li>
-  <a (click)="goBack()">Back</a>
-  </li>
-  <li>
-    <a routerLink="/signin">Sign Out</a>
-  </li>
-</ul>
+  <div *ngIf="visRoom" class="card container" style="width: 18rem;">
+    <div class="card-body">
+      <input class="form-control" [(ngModel)]="newRoomName" placeholder="Room Name" />
+      <a type="button" class="btn btn-dark mt-2" (click)="createRoom(); newRoomName=''; visRoom=false">Create</a>
+    </div>
+  </div>
+
+  <hr/>
+  <ul class="nav nav-fill btn-group m-2" role="group">
+    <li class="nav-link">
+      <a tooltip="Go to your home room" type="button" class="btn btn-outline-dark " (click)="goHome()">Home</a>
+    </li>
+    <li class="nav-link">
+      <a tooltip="Go back a room" type="button" class="btn btn-outline-dark " (click)="goBack()">Back</a>
+    </li>
+    <li class="nav-link">
+      <a tooltip="Create a new room" type="button" class="btn btn-outline-dark " (click)="newRoom()">New</a>
+    </li>
+    <li class="nav-link">
+      <a tooltip="Delete a room" type="button" class="btn btn-outline-dark " (click)="deleteRoom()">Delete</a>
+    </li>  
+    <li class="nav-link">
+      <a type="button" class="btn btn-outline-dark " routerLink="/signin">Sign Out</a>
+    </li>
+  </ul>
+</div>

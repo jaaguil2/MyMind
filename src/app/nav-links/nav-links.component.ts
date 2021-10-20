@@ -14,8 +14,5 @@ export class NavLinksComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  
-
-}
+  };
+};

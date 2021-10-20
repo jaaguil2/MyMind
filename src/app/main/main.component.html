@@ -1,8 +1,8 @@
-<app-nav-links [rooms]="this.links"></app-nav-links>
-
-<div *ngIf="this.room.name === 'home'">
+<div *ngIf="this.room.name === 'home'" class="text-center">
   <h2>Welcome {{this.room.owner.userName}}</h2>
 </div>
+
+<app-nav-links [rooms]="this.links"></app-nav-links>
 
 <div *ngIf="this.room.name !== 'home'">
   <h3>{{this.room.name}}</h3>

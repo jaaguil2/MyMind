@@ -32,11 +32,13 @@ export class SignUpComponent implements OnInit {
     inputArray.forEach(e => e.trim());
     // do nothing if there are any black spaces
     if (inputArray.includes('')) {
+      this.errorView = "No black spaces";
       return;
     };
     // check if matching passwords
     if (password !== cPassword) {
-      return
+      this.errorView = "Passwords do not match";
+      return;
     }
     // call signUp()
     this.userService.signUp({ name, userName, password, email } as User)
@@ -53,5 +55,5 @@ export class SignUpComponent implements OnInit {
         },
         err => this.errorView = err.error
       )
-  }
-}
+  };
+};

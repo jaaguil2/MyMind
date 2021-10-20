@@ -58,6 +58,4 @@ export class MainComponent implements OnInit {
         this.links = this.room.links
       })
   };
-
-
 };

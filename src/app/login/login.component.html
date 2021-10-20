@@ -6,8 +6,8 @@
     <button type="button" class="btn btn-dark" (click)="handleSubmit(userName.value, userPassword.value); userName.value = ''; userPassword.value = '';">Submit</button>
   </div>
 </div>
-  <alert *ngIf="this.errorView" class="text-center fixed-bottom" type="danger">
-    {{errorView}}
-  </alert>
+<alert *ngIf="this.errorView" class="text-center fixed-bottom" type="danger">
+  {{errorView}}
+</alert>
 
 

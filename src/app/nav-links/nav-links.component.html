@@ -1,9 +1,7 @@
-<div>
-  <ul>
-    <li *ngFor="let room of rooms" >
-      <a routerLink="/room/{{room._id}}">{{room.name}}</a>
-    </li>
-  </ul>
-</div>
+<ul class="nav nav-fill btn-group m-2" role="group">
+  <li *ngFor="let room of rooms" class="nav-link">
+    <a type="button" class="btn btn-outline-dark " routerLink="/room/{{room._id}}">{{room.name}}</a>
+  </li>
+</ul>
 
 
