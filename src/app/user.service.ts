@@ -14,7 +14,7 @@ export class UserService {
 
   
 
-  private apiUrl = 'https://mymind-be.herokuapp.com/api'
+  private apiUrl = 'https://mymind-be.herokuapp.com/api/'
 
   constructor(private http: HttpClient) { }
 
