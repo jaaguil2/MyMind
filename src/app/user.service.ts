@@ -14,7 +14,7 @@ export class UserService {
 
   
 
-  private apiUrl = 'http://localhost:4000/api/'
+  private apiUrl = 'https://mymind-be.herokuapp.com/api'
 
   constructor(private http: HttpClient) { }
 
