@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     BrowserAnimationsModule,
     ButtonsModule.forRoot(),
     TooltipModule.forRoot(),
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    PopoverModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

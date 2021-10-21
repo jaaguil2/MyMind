@@ -1,11 +1,18 @@
-<div>
-  <label for="thoughts">My Thoughts:</label>
-  <textarea id="thoughts" [(ngModel)]="thoughts" placeholder="Enter your thoughts here..."></textarea>
-  <button (click)="saveThoughts()">Save</button>
+<div class="card">
+  <div class="card-header">
+    <h2>{{name}}</h2>
+  </div>
+  <div class="card-body">
+    <textarea id="thoughts" class="form-control" [(ngModel)]="thoughts" placeholder="Enter your thoughts here..."></textarea>
+    <div class="d-flex justify-content-end m-2 ">
+      <button 
+        type="button" 
+        class="btn btn-dark" 
+        (click)="saveThoughts()"
+        popover="Saved!"
+        placement="left"
+        triggers="focus"
+      >Save</button>
+    </div>
+  </div>
 </div>
-
-<!-- 
-  get thoughts
-  put in textarea
-  allow to save
--->

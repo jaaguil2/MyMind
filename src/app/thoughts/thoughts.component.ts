@@ -11,6 +11,7 @@ import { RoomService } from '../room.service';
 export class ThoughtsComponent implements OnInit {
   @Input() thoughts: string = '';
   @Input() id: string = '';
+  @Input() name: string = '';
   
   constructor(private roomService: RoomService) { }
 
@@ -21,9 +22,4 @@ export class ThoughtsComponent implements OnInit {
     this.roomService.setThoughts({thoughts: this.thoughts, id: this.id})
       .subscribe()
   };
-
-}
-
-// get thoughts
-// put in textarea
-// allow to save
+};

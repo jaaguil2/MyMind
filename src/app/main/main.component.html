@@ -5,8 +5,8 @@
 <app-nav-links [rooms]="this.links"></app-nav-links>
 
 <div *ngIf="this.room.name !== 'home'">
-  <h3>{{this.room.name}}</h3>
   <app-thoughts 
+    [name]="this.room.name"
     [thoughts]="this.room.thoughts"
     [id]="this.room._id"
   >
