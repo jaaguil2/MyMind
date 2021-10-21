@@ -70,8 +70,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "MyMind:build:production",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "MyMind:build:production"
             },
             "development": {
               "browserTarget": "MyMind:build:development"
