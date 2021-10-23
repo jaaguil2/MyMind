@@ -17,10 +17,11 @@ Capstone project for General Assembly.
   - RxJS
 - [NGX-Bootstrap](https://valor-software.com/ngx-bootstrap/#/)
 - [Express](https://expressjs.com/)
+- [Heroku](https://www.heroku.com/)
 
 ## Features
 
-Backend support with [MondoAtlas](https://www.mongodb.com/atlas/database).
+Backend support with [MongoAtlas](https://www.mongodb.com/atlas/database).
 
 ## Installation
 
@@ -41,6 +42,11 @@ ng serve -o
 
 [Link](https://mymind-fe.herokuapp.com/) to see the deployed app.
 > Heroku puts apps to "sleep" if not being used. Give it a moment to "wake" up.
+
+## Future Updates
+
+- [] Add more functionality
+- [] Fully implement authorization
 
 ## Credits
 
