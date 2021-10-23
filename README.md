@@ -1,27 +1,50 @@
 # MyMind
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.
+A spatial-based mind map where you can link your ideas by rooms.
 
-## Development server
+## Motivation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Capstone project for General Assembly.
 
-## Code scaffolding
+## Screenshot
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+![image](https://user-images.githubusercontent.com/62955391/138561031-72ace55a-ed1d-4963-95db-f16d7b455976.png)
 
-## Build
+## Tech & Framework Used
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- [Angular](https://angular.io/)
+  - Typescript
+  - RxJS
+- [NGX-Bootstrap](https://valor-software.com/ngx-bootstrap/#/)
+- [Express](https://expressjs.com/)
 
-## Running unit tests
+## Features
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Backend support with [MondoAtlas](https://www.mongodb.com/atlas/database).
 
-## Running end-to-end tests
+## Installation
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+If you want to poke around the app, use npm install to download dependencies after cloning the project.
+Use `ng serve -o` to launch the app locally.
 
-## Further help
+```bash
+npm install
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+ng serve -o
+```
+
+## API
+
+[Link](https://github.com/jaaguil2/MyMind-Backend) for backend repository. 
+
+## Usage
+
+[Link](https://mymind-fe.herokuapp.com/) to see the deployed app.
+> Heroku puts apps to "sleep" if not being used. Give it a moment to "wake" up.
+
+## Credits
+
+Made entirely by [me](https://github.com/jaaguil2).
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/) :copyright: Joshua Aguilar
